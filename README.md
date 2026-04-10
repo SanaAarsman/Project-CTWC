@@ -96,8 +96,8 @@ The SQL workflow is split into four main files:
 Because of that, it should not be used for full-period comparison across all years.
 
 ## Outputs
-- Tableau Public dashboard/story: **[add Tableau Public link here]**
-- Presentation text/script: **[add presentation text link here]**
+- Tableau Public dashboard/story: **(https://public.tableau.com/app/profile/sana.aarsman/viz/ctwc_project_class_presentation/Story_Presentation)**
+- Presentation text/script: **https://docs.google.com/document/d/1MP0rJxY5_5MQKYbdbv50EOh2LdsafkoRKZjwFi7gbBI/edit?tab=t.0#heading=h.r1dslbequ25r**
 
 ## Final note
 This repository is structured to show the full project pipeline, from cleaned source data and SQL preparation to final analytical views and Tableau-based presentation outputs.

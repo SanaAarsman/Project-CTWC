@@ -1,62 +1,103 @@
-*Latest update: 28.03.2026*
+*Latest update: 10.04.2026*
 
 # Project-CTWC
 
 ## Project overview
-This project analyzes the Classic Tetris World Championship (CTWC) to understand how the competition has changed over time.
+This project analyses the Classic Tetris World Championship (CTWC) to understand how the competition evolved over time, what may have driven the rise in performance, and whether that competitive growth was also reflected in Twitch audience trends.
 
-The main goal is to show the growth and evolution of the game through:
+The project combines competition data and Twitch stream data to compare changes in player performance, tournament structure, playstyles, and online viewership across years.
+
+## Project objective
+The main goal of this project is to answer two connected questions:
+
+- How did CTWC grow and change as a competition over time?
+- Was that competitive growth matched by similar growth in its online audience?
+
+To answer this, the project focuses on:
 - tournament structure changes across years
 - playstyle evolution (`DAS`, `Tap`, `Roll`)
 - performance trends over time
 - relationships between score, total lines, and playstyle
-- broader competitive growth, with viewership/context data added where useful
+- Twitch audience trends alongside competition trends
 
-## Current focus
-The project is currently centered on the historical CTWC match dataset.
-
-The analysis is focused on:
-- identifying which trends are real competitive changes
-- separating gameplay evolution from format effects
-- understanding how rule and structure changes affect year-to-year comparisons
-- building a clean story for final presentation and dashboarding
-
-## Current status
-So far, I have completed:
-- dataset loading and review
-- dataset usefulness assessment
-- missing-value investigation
-- univariate EDA
-- core bivariate EDA
-- initial interpretation of major year-level patterns
-- preparation for SQL/Tableau-ready outputs where needed
-
-## Main findings so far
-The clearest finding so far is that CTWC performance cannot be interpreted as a simple year-to-year improvement story.
-
-Several major shifts overlap in the data:
-- changes in tournament structure
-- changes in competitive depth
-- changes in dominant playstyles
-- pandemic-related format changes
-
-This means some apparent jumps or drops in performance are not purely player-skill changes. They must be interpreted in the context of how the competition itself changed.
-
-A particularly important point is that the pandemic years introduced major format changes, making direct comparison with earlier in-person years less straightforward.
+## Key insights
+- CTWC performance increased strongly over time, but this was not a simple year-to-year improvement story
+- Changes in tournament structure affected how some years should be interpreted and compared
+- The pandemic years introduced major format changes, making direct comparison with earlier in-person years less straightforward
+- Playstyle shifts were closely linked to the rise in performance
+- Competition growth was clear, but audience growth was less consistent and less straightforward than the competitive side
 
 ## Why this project matters
-CTWC is not just a record of tournament results. It also reflects how a game, a competitive scene, and player skill ceilings evolved over time.
+CTWC is not only a tournament. It is also a long-term record of how a game, a competitive scene, and player skill ceilings evolved over time.
 
-This project aims to turn that history into a clear, evidence-based story using data analysis and visualization.
+This project turns that history into a structured, evidence-based story using data cleaning, SQL modelling, and visual analysis.
 
-## Project structure
-- `data/` → raw and prepared project data files
-- `notebooks/` → data cleaning, investigation, and analysis notebooks
-- `README.md` → project summary and status
+## Tools used
+- Python
+- Jupyter Notebook
+- Pandas
+- MySQL
+- Tableau Public
 
-## Next steps
-- refine the strongest findings into a tighter final project narrative
-- prepare final visuals and dashboard views
-- integrate Twitch/viewership context where it adds value
-- finalize presentation-ready insights and recommendations
-- update project documentation as the analysis expands
+## Data overview
+This project uses a mix of competition and Twitch-related source data.
+
+Main source areas:
+- CTWC match and year-level competition data
+- player and country reference data
+- TwitchTracker stream-level data for CTWC-related broadcasts
+
+The final processed data is organised into:
+- cleaned CSV files for SQL input
+- SQL-generated view exports for Tableau Public
+
+## Repository structure
+    Project-CTWC/
+    ├── data/
+    │   ├── raw/                        # Original source files
+    │   └── processed/
+    │       ├── csv_files/              # Cleaned SQL-ready input files
+    │       └── sql_views/              # Exported SQL views used in Tableau Public
+    ├── images/                         # Project and presentation images
+    ├── notebooks/                      # Cleaning, review, integration, and prep notebooks
+    ├── sql/
+    │   ├── database_model/             # ERD / database model file
+    │   ├── 01_ctwc_import_and_setup.sql
+    │   ├── 02_ctwc_validation.sql
+    │   ├── 03_ctwc_views.sql
+    │   └── 04_ctwc_export_for_tableau_public.sql
+    ├── tableau/
+    │   └── ctwc_project_class_presentation.twbx
+    └── README.md
+
+## Workflow
+The project workflow followed these main steps:
+
+1. Review and assess the available source datasets
+2. Clean and prepare useful sheets in Python
+3. Standardise files for SQL input
+4. Import cleaned data into MySQL
+5. Validate table quality and joins
+6. Build analysis-layer SQL views
+7. Export Tableau-ready view files
+8. Create the final visual analysis in Tableau Public
+
+## SQL pipeline
+The SQL workflow is split into four main files:
+
+- `01_ctwc_import_and_setup.sql` → loads the cleaned CSV files into MySQL
+- `02_ctwc_validation.sql` → checks row counts, duplicates, nulls, and join quality
+- `03_ctwc_views.sql` → builds the main analytical views
+- `04_ctwc_export_for_tableau_public.sql` → exports the final views for Tableau Public
+
+## Important data note
+`views_gained` is available through 2021 and missing from 2022 onward in the TwitchTracker stream dataset.
+
+Because of that, it should not be used for full-period comparison across all years.
+
+## Outputs
+- Tableau Public dashboard/story: **[add Tableau Public link here]**
+- Presentation text/script: **[add presentation text link here]**
+
+## Final note
+This repository is structured to show the full project pipeline, from cleaned source data and SQL preparation to final analytical views and Tableau-based presentation outputs.
